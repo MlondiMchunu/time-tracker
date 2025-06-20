@@ -20,15 +20,49 @@ function App() {
 
       <div>
         <h4>Add New Entry</h4>
-        <form onSubmit={handleSubmit}></form>
+        <form onSubmit={handleSubmit}>
+          <div>
+            <label htmlFor='taskName'>Task Name : </label>
+            <input type="text" id="taskName" value={taskName} onChange={(e) => setTaskName(e.target.value)} required></input>
+          </div>
+          <br></br>
+          <div>
+            <label htmlFor='hoursWorked'>Hours Worked : </label>
+            <input type='number' id='hoursWorked' value={hoursWorked || ''} onChange={(e) => setHoursWorked(Number(e.target.value))} min="0" step="0.25" placeholder="0" required></input>
+          </div>
+          <div><br></br>
+            <button type="submit" className=''>Add Entry</button>
+          </div>
+        </form>
+      </div>
+      <br></br>
+      <div>
         <div>
-          <label htmlFor='taskName'>Task Name : </label>
-          <input type="text" id="taskName" value={taskName} onChange={(e)=>setTaskName(e.target.value)} required></input>
+          <h4>
+            Time Entries
+          </h4>
         </div>
-        <br></br>
         <div>
-          <label htmlFor='hoursWorked'>Hours Worked : </label>
-          <input type='number' id='hoursWorked' value={hoursWorked || ''} onChange={(e)=>setHoursWorked(Number(e.target.value))} min="0" step="0.25" placeholder="0" required></input>
+          <label>Total : { }</label>
+        </div>
+        <div>
+          {entries.length===0 ? (
+            <p>No entries yet. Add your first time entry above!</p>
+          ):(
+            <ul>
+              {entries.map((entry)=>(
+                <li key={entry.id}>
+                  <div>
+                    <h6>
+                      {entry.taskName}
+                    </h6>
+                    <p>{entry.hoursWorked} hours</p>
+                  </div>
+                  <button></button>
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
       </div>
     </>
