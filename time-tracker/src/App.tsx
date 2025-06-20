@@ -3,13 +3,13 @@ import type { Time } from './types'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
   const [entries, setEntries] = useState<Time[]>([]);
   const [taskName, setTaskName] = useState('');
   const [hoursWorked, setHoursWorked] = useState<number>(0);
+  const [editId, setEditId] = useState<string | null>(null);
 
   //calculate total hours
-  const totalHours = entries.reduce((sum,entry)=>sum + entry.hoursWorked,0);
+  const totalHours = entries.reduce((sum, entry) => sum + entry.hoursWorked, 0);
 
 
   //handle form submission
@@ -19,15 +19,23 @@ function App() {
     //validate inputs
     if (!taskName.trim() || hoursWorked <= 0) return;
 
-    //create new entry with unique ID
-    const newEntry: Time = {
-      id: Date.now().toString(),
-      taskName,
-      hoursWorked,
-    };
+    if (editId) {
+      //update existing entry
+      setEntries(entries.map(entry =>
+        entry.id === editId ? { ...entry, taskName, hoursWorked } : entry
+      ));
+      setEditId(null);
+    } else {
+      //create new entry with unique ID
+      const newEntry: Time = {
+        id: Date.now().toString(),
+        taskName,
+        hoursWorked,
+      };
 
-    //Add to entries array
-    setEntries([...entries, newEntry]);
+      //Add to entries array
+      setEntries([...entries, newEntry]);
+    }
 
     //Reset form
     setTaskName('');
@@ -79,9 +87,9 @@ function App() {
               {entries.map((entry) => (
                 <li key={entry.id}>
                   <div>
-                    {entry.taskName} | {entry.hoursWorked} hours | <button onClick={()=>handleDelete(entry.id)}>delete</button>
+                    {entry.taskName} | {entry.hoursWorked} hours | <button onClick={() => handleDelete(entry.id)}>delete</button>
                   </div>
-                  
+
                 </li>
               ))}
             </ul>
