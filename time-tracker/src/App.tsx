@@ -79,7 +79,7 @@ function App() {
               {entries.map((entry) => (
                 <li key={entry.id}>
                   <div>
-                    {entry.taskName} | {entry.hoursWorked} hours | <button>delete</button>
+                    {entry.taskName} | {entry.hoursWorked} hours | <button onClick={()=>handleDelete(entry.id)}>delete</button>
                   </div>
                   
                 </li>
