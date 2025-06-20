@@ -1,26 +1,31 @@
 import { useState } from 'react'
-import type {Time} from './types'
+import type { Time } from './types'
 import './App.css'
 
 function App() {
   const [count, setCount] = useState(0)
   const [entries, setEntries] = useState<Time[]>([]);
-  const [taskName,setTaskName] = useState('');
-  const [hoursWorked,setHoursWorked] = useState<number>(0);
+  const [taskName, setTaskName] = useState('');
+  const [hoursWorked, setHoursWorked] = useState<number>(0);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!taskName || hoursWorked <= 0) return;
+  }
 
   return (
     <>
       <div>
-       
+
       </div>
-      
+
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
         </button>
-       
+
       </div>
-     
+
     </>
   )
 }
