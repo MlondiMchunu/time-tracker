@@ -8,7 +8,9 @@ function App() {
   const [taskName, setTaskName] = useState('');
   const [hoursWorked, setHoursWorked] = useState<number>(0);
 
- 
+const handleSubmit = (e:React.FormEvent)=>{
+  e.preventDefault();
+}
 
   return (
     <>
