@@ -32,6 +32,11 @@ function App() {
 
   };
 
+  //handle deleting an entry
+  const handleDelete = (id:string)=>{
+    setEntries(entries.filter(entry=>entry.id !== id));
+  };
+
   return (
     <>
       <div className="">
