@@ -14,8 +14,14 @@ function App() {
     e.preventDefault();
 
     //validate inputs
-    if(!taskName.trim() || hoursWorked <= 0) return;
+    if (!taskName.trim() || hoursWorked <= 0) return;
 
+    //create new entry with unique ID
+    const newEntry: Time = {
+      id: Date.now().toString(),
+      taskName,
+      hoursWorked,
+    };
   }
 
   return (
@@ -52,11 +58,11 @@ function App() {
           <label>Total : { }</label>
         </div>
         <div>
-          {entries.length===0 ? (
+          {entries.length === 0 ? (
             <p>No entries yet. Add your first time entry above!</p>
-          ):(
+          ) : (
             <ul>
-              {entries.map((entry)=>(
+              {entries.map((entry) => (
                 <li key={entry.id}>
                   <div>
                     <h6>
