@@ -43,6 +43,16 @@ function App() {
 
   };
 
+  //handle editing an entry
+  const handleEdit = (id: string) => {
+    const entryToEdit = entries.find(entry => entry.id === id);
+    if (entryToEdit) {
+      setTaskName(entryToEdit.taskName);
+      setHoursWorked(entryToEdit.hoursWorked);
+      setEditId(id);
+    }
+  };
+
   //handle deleting an entry
   const handleDelete = (id: string) => {
     setEntries(entries.filter(entry => entry.id !== id));
