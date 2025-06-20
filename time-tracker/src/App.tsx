@@ -8,8 +8,14 @@ function App() {
   const [taskName, setTaskName] = useState('');
   const [hoursWorked, setHoursWorked] = useState<number>(0);
 
+
+  //handle form submission
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    //validate inputs
+    if(!taskName.trim() || hoursWorked <= 0) return;
+
   }
 
   return (
