@@ -56,7 +56,7 @@ function App() {
   //handle deleting an entry
   const handleDelete = (id: string) => {
     setEntries(entries.filter(entry => entry.id !== id));
-    if(editId===id){
+    if (editId === id) {
       setEditId(null);
       setTaskName('');
       setHoursWorked(0);
@@ -81,8 +81,18 @@ function App() {
             <label htmlFor='hoursWorked'>Hours Worked : </label>
             <input type='number' id='hoursWorked' value={hoursWorked || ''} onChange={(e) => setHoursWorked(Number(e.target.value))} min="0" step="0.25" placeholder="0" required></input>
           </div>
-          <div><br></br>
-            <button type="submit" className=''>Add Entry</button>
+          <br></br>
+          <div>
+            <button type="submit" className=''>
+              {editId ? 'Update' : 'Add'} Entry
+            </button>
+            {editId && (
+              <button type="button" onClick={() => {
+                setEditId(null);
+                setTaskName('');
+                setHoursWorked(0);
+              }}></button>
+            )}
           </div>
         </form>
       </div>
