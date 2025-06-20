@@ -56,6 +56,11 @@ function App() {
   //handle deleting an entry
   const handleDelete = (id: string) => {
     setEntries(entries.filter(entry => entry.id !== id));
+    if(editId===id){
+      setEditId(null);
+      setTaskName('');
+      setHoursWorked(0);
+    }
   };
 
   return (
