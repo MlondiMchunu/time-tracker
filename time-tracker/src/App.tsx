@@ -8,24 +8,18 @@ function App() {
   const [taskName, setTaskName] = useState('');
   const [hoursWorked, setHoursWorked] = useState<number>(0);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!taskName || hoursWorked <= 0) return;
-  }
+ 
 
   return (
     <>
-      <div>
-
+      <div className="">
+        <h2>Time Tracker</h2>
       </div>
 
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-
-      </div>
-
+<div>
+  <h4>Add New Entry</h4>
+  <form onSubmit={handleSubmit}></form>
+</div>
     </>
   )
 }
