@@ -1,6 +1,7 @@
-export interface Time {
+export type Time = {
     id: string;
     taskName: string;
     hoursWorked: number;
+    date:string
 }
 
