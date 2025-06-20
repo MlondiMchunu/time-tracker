@@ -91,7 +91,7 @@ function App() {
                 setEditId(null);
                 setTaskName('');
                 setHoursWorked(0);
-              }}></button>
+              }}>Cancel</button>
             )}
           </div>
         </form>
@@ -104,6 +104,7 @@ function App() {
           </h4>
         </div>
 
+
         <div>
           {entries.length === 0 ? (
             <p>No entries yet. Add your first time entry above!</p>
@@ -112,7 +113,10 @@ function App() {
               {entries.map((entry) => (
                 <li key={entry.id}>
                   <div>
-                    {entry.taskName} | {entry.hoursWorked} hours | <button onClick={() => handleDelete(entry.id)}>delete</button>
+                    {entry.taskName} | {entry.hoursWorked.toFixed(2)} hours |
+
+                    <button onClick={() => handleEdit(entry.id)}>edit</button>
+                    <button onClick={() => handleDelete(entry.id)}>delete</button>
                   </div>
 
                 </li>
@@ -121,7 +125,7 @@ function App() {
           )}
         </div>
         <div>
-          <label>Total : {totalHours}</label>
+          <label><hr></hr>Total : {totalHours.toFixed(2)} hours<hr></hr></label>
         </div>
       </div>
     </>
