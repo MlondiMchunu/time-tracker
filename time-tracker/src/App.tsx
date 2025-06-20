@@ -75,23 +75,20 @@ function App() {
           {entries.length === 0 ? (
             <p>No entries yet. Add your first time entry above!</p>
           ) : (
-            <ul>
+            <ul className='text-left'>
               {entries.map((entry) => (
                 <li key={entry.id}>
                   <div>
-
-                    {entry.taskName} | {entry.hoursWorked} hours
-
-
+                    {entry.taskName} | {entry.hoursWorked} hours | <button>delete</button>
                   </div>
-                  <button></button>
+                  
                 </li>
               ))}
             </ul>
           )}
         </div>
         <div>
-          <label>Total : { }</label>
+          <label>Total : {totalHours}</label>
         </div>
       </div>
     </>
