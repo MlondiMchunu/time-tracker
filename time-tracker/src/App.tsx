@@ -8,6 +8,9 @@ function App() {
   const [taskName, setTaskName] = useState('');
   const [hoursWorked, setHoursWorked] = useState<number>(0);
 
+  //calculate total hours
+  const totalHours = entries.reduce((sum,entry)=>sum + entry.hoursWorked,0);
+
 
   //handle form submission
   const handleSubmit = (e: React.FormEvent) => {
@@ -24,7 +27,7 @@ function App() {
     };
 
     //Add to entries array
-    setEntries([...entries,newEntry]);
+    setEntries([...entries, newEntry]);
 
     //Reset form
     setTaskName('');
@@ -33,8 +36,8 @@ function App() {
   };
 
   //handle deleting an entry
-  const handleDelete = (id:string)=>{
-    setEntries(entries.filter(entry=>entry.id !== id));
+  const handleDelete = (id: string) => {
+    setEntries(entries.filter(entry => entry.id !== id));
   };
 
   return (
@@ -67,9 +70,7 @@ function App() {
             Time Entries
           </h4>
         </div>
-        <div>
-          <label>Total : { }</label>
-        </div>
+
         <div>
           {entries.length === 0 ? (
             <p>No entries yet. Add your first time entry above!</p>
@@ -78,16 +79,19 @@ function App() {
               {entries.map((entry) => (
                 <li key={entry.id}>
                   <div>
-                    <h6>
-                      {entry.taskName}
-                    </h6>
-                    <p>{entry.hoursWorked} hours</p>
+
+                    {entry.taskName} | {entry.hoursWorked} hours
+
+
                   </div>
                   <button></button>
                 </li>
               ))}
             </ul>
           )}
+        </div>
+        <div>
+          <label>Total : { }</label>
         </div>
       </div>
     </>
