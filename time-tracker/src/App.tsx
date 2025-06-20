@@ -22,8 +22,15 @@ function App() {
       taskName,
       hoursWorked,
     };
-    
-  }
+
+    //Add to entries array
+    setEntries([...entries,newEntry]);
+
+    //Reset form
+    setTaskName('');
+    setHoursWorked(0);
+
+  };
 
   return (
     <>
