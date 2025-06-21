@@ -46,7 +46,39 @@ export default function Timer({ onTimerComplete }: TimerProps) {
     };
 
     //pauses timer & records elapsed time
-    const pauseTimer = ()=>{
+    const pauseTimer = () => {
         setIsPaused(true);
     }
+    const formatTime = (ms: number) => {
+        const totalSeconds = Math.floor(ms / 1000);
+        const hours = Math.floor(totalSeconds / 3600);
+        const minutes = Math.floor((totalSeconds % 3600) / 60);
+        const seconds = totalSeconds % 60;
+        return [
+            hours.toString().padStart(2, '0'),
+            minutes.toString().padStart(2, '0'),
+            seconds.toString().padStart(2, '0')
+        ].join(':');
+    };
+
+    return (
+        <>
+            <div>
+                <h4>Task Timer</h4>
+                {/**Timer display and controls*/}
+                {isRunning ? (
+                    <div>
+                        <p>
+                            Tracking : <span>
+                                {taskName}
+                            </span>
+                        </p>
+                        <p>
+                            {formatTime(elapsedTime)}
+                        </p>
+                    </div>
+                )}
+            </div>
+        </>
+    )
 }
