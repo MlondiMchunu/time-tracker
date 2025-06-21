@@ -1,2 +1,22 @@
 # time-tracker
 Looped automation challenge
+
+####To run the project in local machine, first make sure you have Docker installed, then;
+
+1.Clone the project to your computer:
+
+    git clone https://github.com/MlondiMchunu/time-tracker.git
+
+2.Navigate to the project root 
+ 
+    cd time-tracker
+
+3.Build docker image
+
+    sudo docker build -t timer-tracker .
+
+4.Run the docker container
+
+    sudo docker run -p 3000:3000 timer-tracker
+
+5.Now your app should be running at http://localhost:3000! 🚀
