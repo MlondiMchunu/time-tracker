@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import type { Time } from './types'
+import Timer from './components/Timer';
 import './App.css'
 
 function App() {
@@ -95,6 +96,10 @@ function App() {
             )}
           </div>
         </form>
+      </div>
+      <div>
+        <h4>Time Tracker</h4>
+        <Timer onTimerComplete={handleTimerComplete}/>
       </div>
       <br></br>
       <div>
