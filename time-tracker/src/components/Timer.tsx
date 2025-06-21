@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 
 //Define props for the timer component
 type TimerProps = {
-    onTimerComplete: (hours: number, taskName: string) => void;
+    onTimerComplete: (taskName: string, hours: number) => void;
 };
 
 export default function Timer({ onTimerComplete }: TimerProps) {
@@ -61,6 +61,25 @@ export default function Timer({ onTimerComplete }: TimerProps) {
         ].join(':');
     };
 
+    const resumeTimer = () => {
+        setIsPaused(false);
+    };
+
+    /**stops timer and calculates hours worked*/
+    const stopTimer = () => {
+        const totalMs = elapsedTime;
+        const hoursWorked = totalMs / (1000 * 60 * 60);
+
+        //reset timer state
+        setIsRunning(false);
+        setIsPaused(false);
+        setElapseTime(0);
+
+        //send data to parent component
+        onTimerComplete(taskName, parseFloat(hoursWorked.toFixed(2)));
+        setTaskName('');
+    };
+
     return (
         <>
             <div>
@@ -76,6 +95,14 @@ export default function Timer({ onTimerComplete }: TimerProps) {
                         <p>
                             {formatTime(elapsedTime)}
                         </p>
+                        <div>
+                            {isPaused ? (
+                                <button onClick={resumeTimer}>Resume</button>
+                            ) : (
+                                <button onClick={pauseTimer}>Pause</button>
+                            )}
+                            <button onClick={stopTimer}></button>
+                        </div>
                     </div>
                 )}
             </div>
