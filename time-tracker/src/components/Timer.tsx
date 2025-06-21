@@ -8,14 +8,14 @@ type TimerProps = {
 export default function Timer({ onTimerComplete }: TimerProps) {
     //State for tracking timer status and values 
     const [isRunning, setIsRunning] = useState(false);
-    const [startTime, setStartTime] = useState<number | null>(null);
+   //const [setStartTime] = useState<number | null>(null);
     const [elapsedTime, setElapsedTime] = useState(0);
     const [isPaused, setIsPaused] = useState(false);
     const [taskName, setTaskName] = useState('');
 
     //Effect hook to handle timer interval
     useEffect(() => {
-        let interval: NodeJS.Timeout;
+        let interval: ReturnType<typeof setTimeout>;;
 
         //only run timer when active and not paused
         if (isRunning && !isPaused) {
@@ -40,7 +40,7 @@ export default function Timer({ onTimerComplete }: TimerProps) {
         }
         setIsRunning(true);
         setIsPaused(false);
-        setStartTime(Date.now());
+       // setStartTime(Date.now());
     };
 
     //pauses timer & records elapsed time
