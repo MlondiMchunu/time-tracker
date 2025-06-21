@@ -101,8 +101,18 @@ export default function Timer({ onTimerComplete }: TimerProps) {
                             ) : (
                                 <button onClick={pauseTimer}>Pause</button>
                             )}
-                            <button onClick={stopTimer}></button>
+                            <button onClick={stopTimer}>
+                                Stop & Save
+                            </button>
                         </div>
+                    </div>
+                ) : (
+                    <div>
+                        <div>
+                            <label htmlFor='timerTask'>Task Name</label>
+                            <input type='text' id='timerTask' value={taskName} onChange={(e)=>setTaskName(e.target.value)} placeholder="current task"> </input>
+                        </div>
+                        <button onClick={startTimer}>Start Timer</button>
                     </div>
                 )}
             </div>
