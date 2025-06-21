@@ -2,7 +2,7 @@
 Looped automation challenge :
 This is a simple web app that allows a user to track how they’re spending their time.
 
-#### To run the project in local machine, first make sure you have Docker installed, then;
+#### A. To run the project in local machine, first make sure you have Docker installed, then;
 
 1.Clone the project to your computer:
 
