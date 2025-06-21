@@ -12,6 +12,8 @@ export default function Timer({ onTimerComplete }: TimerProps) {
     const [startTime, setStartTime] = useState<number | null>(null);
     const [elapsedTime, setElapseTime] = useState(0)
     const [isPaused, setIsPaused] = useState(false);
+    const [taskName, setTaskName] = useState('')
+
 
     //Effect hook to handler timer interval
     useEffect(() => {
@@ -28,4 +30,23 @@ export default function Timer({ onTimerComplete }: TimerProps) {
         //Cleanup interval on component unmount or state change
         return () => clearInterval(interval);
     }, [isRunning, isPaused]);
+
+    /*
+    *Starts the timer with current task name
+    *validates input before starting
+    */
+    const startTimer = () => {
+        if (!taskName.trim()) {
+            alert(`please enter a task name before starting a timer`);
+            return;
+        }
+        setIsRunning(true);
+        setIsPaused(false);
+        setStartTime(Date.now());
+    };
+
+    //pauses timer & records elapsed time
+    const pauseTimer = ()=>{
+        setIsPaused(true);
+    }
 }
