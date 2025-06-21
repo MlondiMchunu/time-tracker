@@ -1,7 +1,7 @@
 # time-tracker
 Looped automation challenge
 
-####To run the project in local machine, first make sure you have Docker installed, then;
+#### To run the project in local machine, first make sure you have Docker installed, then;
 
 1.Clone the project to your computer:
 
