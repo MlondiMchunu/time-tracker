@@ -1,5 +1,6 @@
 # time-tracker
-Looped automation challenge
+Looped automation challenge :
+This is a simple web app that allows a user to track how they’re spending their time.
 
 #### To run the project in local machine, first make sure you have Docker installed, then;
 
