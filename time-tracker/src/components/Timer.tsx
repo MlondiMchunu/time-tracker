@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 
-
 //Define props for the timer component
 type TimerProps = {
     onTimerComplete: (taskName: string, hours: number) => void;
@@ -10,12 +9,11 @@ export default function Timer({ onTimerComplete }: TimerProps) {
     //State for tracking timer status and values 
     const [isRunning, setIsRunning] = useState(false);
     const [startTime, setStartTime] = useState<number | null>(null);
-    const [elapsedTime, setElapseTime] = useState(0)
+    const [elapsedTime, setElapsedTime] = useState(0);
     const [isPaused, setIsPaused] = useState(false);
-    const [taskName, setTaskName] = useState('')
+    const [taskName, setTaskName] = useState('');
 
-
-    //Effect hook to handler timer interval
+    //Effect hook to handle timer interval
     useEffect(() => {
         let interval: NodeJS.Timeout;
 
@@ -23,7 +21,7 @@ export default function Timer({ onTimerComplete }: TimerProps) {
         if (isRunning && !isPaused) {
             interval = setInterval(() => {
                 //update elapsed time every 100ms for smooth display
-                setElapseTime(prev => prev + 100);
+                setElapsedTime(prev => prev + 100);
             }, 100);
         }
 
@@ -32,12 +30,12 @@ export default function Timer({ onTimerComplete }: TimerProps) {
     }, [isRunning, isPaused]);
 
     /*
-    *Starts the timer with current task name
-    *validates input before starting
+    * Starts the timer with current task name
+    * validates input before starting
     */
     const startTimer = () => {
         if (!taskName.trim()) {
-            alert(`please enter a task name before starting a timer`);
+            alert('Please enter a task name before starting a timer');
             return;
         }
         setIsRunning(true);
@@ -48,7 +46,9 @@ export default function Timer({ onTimerComplete }: TimerProps) {
     //pauses timer & records elapsed time
     const pauseTimer = () => {
         setIsPaused(true);
-    }
+    };
+
+    //formats time for display (HH:MM:SS)
     const formatTime = (ms: number) => {
         const totalSeconds = Math.floor(ms / 1000);
         const hours = Math.floor(totalSeconds / 3600);
@@ -65,7 +65,7 @@ export default function Timer({ onTimerComplete }: TimerProps) {
         setIsPaused(false);
     };
 
-    /**stops timer and calculates hours worked*/
+    /** stops timer and calculates hours worked */
     const stopTimer = () => {
         const totalMs = elapsedTime;
         const hoursWorked = totalMs / (1000 * 60 * 60);
@@ -73,7 +73,7 @@ export default function Timer({ onTimerComplete }: TimerProps) {
         //reset timer state
         setIsRunning(false);
         setIsPaused(false);
-        setElapseTime(0);
+        setElapsedTime(0);
 
         //send data to parent component
         onTimerComplete(taskName, parseFloat(hoursWorked.toFixed(2)));
@@ -81,41 +81,44 @@ export default function Timer({ onTimerComplete }: TimerProps) {
     };
 
     return (
-        <>
-            <div>
-                <h4>Task Timer</h4>
-                {/**Timer display and controls*/}
-                {isRunning ? (
-                    <div>
-                        <p>
-                            Tracking : <span>
-                                {taskName}
-                            </span>
-                        </p>
-                        <p>
-                            {formatTime(elapsedTime)}
-                        </p>
-                        <div>
-                            {isPaused ? (
-                                <button onClick={resumeTimer}>Resume</button>
-                            ) : (
-                                <button onClick={pauseTimer}>Pause</button>
-                            )}
-                            <button onClick={stopTimer}>
-                                Stop & Save
+        <div className="timer-container">
+            <h4>Task Timer</h4>
+            {isRunning ? (
+                <div className="timer-active">
+                    <p className="timer-task">Tracking: <span>{taskName}</span></p>
+                    <p className="timer-display">{formatTime(elapsedTime)}</p>
+                    <div className="timer-controls">
+                        {isPaused ? (
+                            <button onClick={resumeTimer} className="resume-button">
+                                Resume
                             </button>
-                        </div>
+                        ) : (
+                            <button onClick={pauseTimer} className="pause-button">
+                                Pause
+                            </button>
+                        )}
+                        <button onClick={stopTimer} className="stop-button">
+                            Stop & Save
+                        </button>
                     </div>
-                ) : (
-                    <div>
-                        <div>
-                            <label htmlFor='timerTask'>Task Name</label>
-                            <input type='text' id='timerTask' value={taskName} onChange={(e)=>setTaskName(e.target.value)} placeholder="current task"> </input>
-                        </div>
-                        <button onClick={startTimer}>Start Timer</button>
-                    </div>
-                )}
-            </div>
-        </>
-    )
+                </div>
+            ) : (
+                <div className="timer-setup">
+                    <div className="timer-input">
+                        <label htmlFor='timerTask'>Task Name : </label>
+                        <input 
+                            type='text' 
+                            id='timerTask' 
+                            value={taskName} 
+                            onChange={(e) => setTaskName(e.target.value)} 
+                            placeholder="Current task" 
+                        />
+                    </div><br/>
+                    <button onClick={startTimer} className="start-button">
+                        Start Timer
+                    </button>
+                </div>
+            )}
+        </div>
+    );
 }
