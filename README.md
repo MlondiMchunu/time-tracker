@@ -21,3 +21,13 @@ This is a simple web app that allows a user to track how they’re spending thei
     sudo docker run -p 3000:3000 timer-tracker
 
 5.Now your app should be running at http://localhost:3000! 🚀
+
+
+
+###### Assumptions & trade-offs:
+ - The app does not show exact minutes after task is logged
+ - This compels users to mainly use it for real scenario task time     tracking not as short time tracker/stop watch
+
+ ###### Improvements:
+  - store data in a database
+  - send an alert to user device(email/sms) after a certain hours to remind user of ongoing timer (timer task feature)
