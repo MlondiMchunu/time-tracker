@@ -25,9 +25,17 @@ This is a simple web app that allows a user to track how they’re spending thei
 
 
 ###### Assumptions & trade-offs:
+A. High Level
  - The app will only show time in hours not minutes & seconds after task is logged
  - This compels users to mainly use it for real task scenario time tracking instead of short time tracker/stop watch
+ - 
 
  ###### Improvements:
+
+ A. High Level:
   - send an alert to user device(email/sms) after a certain hours to remind user of ongoing timer (timer task feature)
   - register users(signup) for log-ins so they can come back and view their data and maintain database data persistence
+
+B. Low level
+   - Implement Unit testing : Test Driven Development
+   - Analyse efficiency of Data Structures and Algorithms used in the code. This would be essential should the app scale.
