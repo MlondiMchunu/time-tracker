@@ -20,7 +20,7 @@ This is a simple web app that allows a user to track how they’re spending thei
 
     sudo docker run -p 3000:3000 timer-tracker
 
-5.Now your app should be running at http://localhost:3000! 🚀
+5.Now the app should be running at http://localhost:3000! 🚀
 
 
 
