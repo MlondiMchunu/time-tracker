@@ -26,7 +26,7 @@ This is a simple web app that allows a user to track how they’re spending thei
 
 ###### Assumptions & trade-offs:
  - The app will only show time in hours not minutes & seconds after task is logged
- - This compels users to mainly use it for real scenario task time tracking not as short time tracker/stop watch
+ - This compels users to mainly use it for real task scenario time tracking instead of short time tracker/stop watch
 
  ###### Improvements:
   - send an alert to user device(email/sms) after a certain hours to remind user of ongoing timer (timer task feature)
