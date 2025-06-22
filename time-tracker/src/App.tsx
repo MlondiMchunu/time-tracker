@@ -91,7 +91,7 @@ function App() {
             <br></br>
             <div>
               <label htmlFor='hoursWorked'>Hours Worked : </label><br/>
-              <input type='number' id='hoursWorked' value={hoursWorked || ''} onChange={(e) => setHoursWorked(Number(e.target.value))} min="0" step="0.25" placeholder="0" required></input>
+              <input type='number' id='hoursWorked' value={hoursWorked || ''} onChange={(e) => setHoursWorked(Number(e.target.value))} min="0" step="0.01" placeholder="0" required></input>
             </div>
             <br></br>
             <div>
