@@ -30,4 +30,4 @@ This is a simple web app that allows a user to track how they’re spending thei
 
  ###### Improvements:
   - send an alert to user device(email/sms) after a certain hours to remind user of ongoing timer (timer task feature)
-  - register users(signup) for log-ins so their they come back and view their data and store the data in a database
+  - register users(signup) for log-ins so their they come back and view their data and store the data within a database
